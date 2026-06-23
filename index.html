@@ -77,6 +77,18 @@
             border: 1px solid #005c54; /* cyprus-light */
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
         }
+        
+        /* Highlight Ayat Quran */
+        .ayat-highlight {
+            border-color: #004741 !important;
+            background-color: rgba(0, 71, 65, 0.05) !important;
+            transform: scale(1.01);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .dark .ayat-highlight {
+            border-color: #F0EDE4 !important;
+            background-color: rgba(240, 237, 228, 0.05) !important;
+        }
     </style>
 </head>
 <body class="flex h-screen w-full bg-sand text-cyprus dark:bg-cyprus dark:text-sand font-sans overflow-hidden transition-colors duration-500">
@@ -103,7 +115,7 @@
         </div>
 
         <div class="mt-auto flex flex-col gap-3 pt-4">
-            <button onclick="toggleTheme()" id="theme-btn-desktop" class="flex items-center justify-between p-3 rounded-xl bg-sand dark:bg-cyprus text-xs font-bold text-cyprus dark:text-sand hover:bg-sand-dark dark:hover:bg-cyprus-light transition-colors border border-sand-dark dark:border-cyprus-light">
+            <button onclick="toggleTheme()" id="theme-btn-desktop" class="flex items-center justify-between p-3 rounded-xl bg-sand dark:bg-cyprus text-xs font-bold text-cyprus dark:text-sand hover:bg-sand-dark dark:hover:bg-cyprus-light transition-colors border border-sand-dark dark:border-cyprus-light shadow-sm">
                 <span id="theme-text">Mode Malam</span>
                 <i data-lucide="moon" class="w-4 h-4" id="theme-icon"></i>
             </button>
@@ -135,7 +147,7 @@
                     <h2 class="text-lg font-bold mb-0.5 text-cyprus dark:text-sand">Assalamu'alaikum</h2>
                     <p class="text-xs text-cyprus/70 dark:text-sand/70 font-bold mb-4" id="beranda-hijri">Memuat tanggal...</p>
 
-                    <!-- WIDGET LOKASI & JAM (Gradient Applied) -->
+                    <!-- WIDGET LOKASI & JAM -->
                     <div class="bg-gradient-to-br from-cyprus to-cyprus-dark dark:from-sand dark:to-sand-dark rounded-2xl p-5 text-sand dark:text-cyprus shadow-lg relative overflow-hidden transition-all duration-500">
                         <div class="absolute top-0 right-0 opacity-10 pointer-events-none">
                             <i data-lucide="clock" class="w-32 h-32 -mr-6 -mt-6"></i>
@@ -157,7 +169,7 @@
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6 mt-6">
-                    <div onclick="switchTab('jadwal')" class="card-custom p-4 rounded-2xl cursor-pointer hover:border-cyprus dark:hover:border-sand group">
+                    <div onclick="switchTab('jadwal')" class="card-custom p-4 rounded-2xl cursor-pointer hover:border-cyprus dark:hover:border-sand group shadow-sm">
                         <div class="flex justify-between items-center mb-3">
                             <h3 class="text-[11px] text-cyprus/60 dark:text-sand/60 font-bold uppercase tracking-wider">Sholat Berikutnya</h3>
                             <i data-lucide="clock" class="text-cyprus dark:text-sand w-4 h-4 group-hover:scale-110 transition-transform"></i>
@@ -167,7 +179,7 @@
                             <span class="text-xs font-bold" id="beranda-next-name">Izinkan Lokasi</span>
                         </div>
                     </div>
-                    <div onclick="switchTab('tracker')" class="card-custom p-4 rounded-2xl cursor-pointer hover:border-cyprus dark:hover:border-sand group">
+                    <div onclick="switchTab('tracker')" class="card-custom p-4 rounded-2xl cursor-pointer hover:border-cyprus dark:hover:border-sand group shadow-sm">
                         <div class="flex justify-between items-center mb-3">
                             <h3 class="text-[11px] text-cyprus/60 dark:text-sand/60 font-bold uppercase tracking-wider">Misi Hari Ini</h3>
                             <i data-lucide="check-square" class="text-cyprus dark:text-sand w-4 h-4 group-hover:scale-110 transition-transform"></i>
@@ -285,7 +297,7 @@
                             <div class="bg-cyprus/10 dark:bg-sand/10 p-1.5 rounded-lg"><i data-lucide="clock" class="w-4 h-4"></i></div>
                             Jadwal Sholat
                         </h2>
-                        <p class="text-[11px] font-medium text-cyprus/70 dark:text-sand/70">Waktu sholat akurat berdasarkan lokasimu.</p>
+                        <p class="text-[11px] font-medium text-cyprus/70 dark:text-sand/70">Panduan fiqih dan waktu sholat berdasarkan lokasimu.</p>
                     </div>
 
                     <div class="bg-gradient-to-br from-cyprus to-cyprus-dark dark:from-sand dark:to-sand-dark rounded-2xl p-5 text-sand dark:text-cyprus mb-6 shadow-md relative overflow-hidden transition-colors">
@@ -309,7 +321,7 @@
                     
                     <div class="mb-2 px-1 text-[9px] font-bold text-cyprus/50 dark:text-sand/50 uppercase tracking-widest flex justify-between">
                         <span>Wajib & Sunnah</span>
-                        <span class="text-cyprus dark:text-sand font-medium normal-case">Klik untuk Detail</span>
+                        <span class="text-cyprus dark:text-sand font-medium normal-case">Klik untuk Fiqih Detail</span>
                     </div>
                     <div id="jadwal-container" class="grid gap-2 text-center pb-6 text-cyprus/50 dark:text-sand/50">
                         Memuat jadwal...
@@ -325,10 +337,10 @@
                             <div class="bg-cyprus/10 dark:bg-sand/10 p-1.5 rounded-lg"><i data-lucide="calendar-days" class="w-4 h-4"></i></div>
                             Kalender Islam
                         </h2>
-                        <p class="text-[11px] font-medium text-cyprus/70 dark:text-sand/70">Jadwal hari besar dan strategi ibadah.</p>
+                        <p class="text-[11px] font-medium text-cyprus/70 dark:text-sand/70">Jadwal hari besar dan strategi puasa sunnah.</p>
                     </div>
                     
-                    <div class="card-custom rounded-2xl p-4 mb-4">
+                    <div class="card-custom rounded-2xl p-4 mb-4 shadow-sm">
                         <div class="flex items-center justify-between mb-4">
                             <button onclick="changeMonth(-1)" class="p-1.5 bg-sand dark:bg-cyprus rounded-lg text-cyprus dark:text-sand hover:bg-sand-dark dark:hover:bg-cyprus-light transition-colors border border-sand-dark dark:border-cyprus-light">
                                 <i data-lucide="chevron-left" class="w-4 h-4"></i>
@@ -350,7 +362,7 @@
                         <div id="kalender-event-detail" class="mt-3 hidden"></div>
                     </div>
 
-                    <div class="card-custom rounded-2xl p-4 mb-4">
+                    <div class="card-custom rounded-2xl p-4 mb-4 shadow-sm">
                         <h3 class="text-xs font-bold text-cyprus dark:text-sand mb-3 flex items-center gap-1.5">
                             <i data-lucide="moon" class="w-3.5 h-3.5 text-cyprus dark:text-sand"></i> Puasa Sunnah Bulan Ini
                         </h3>
@@ -436,18 +448,18 @@
                             <div class="bg-cyprus/10 dark:bg-sand/10 p-1.5 rounded-lg"><i data-lucide="wallet" class="w-4 h-4"></i></div>
                             Kalkulator Ibadah
                         </h2>
-                        <p class="text-[11px] font-medium text-cyprus/70 dark:text-sand/70">Hitung persiapan zakat dan perencanaan tabungan.</p>
+                        <p class="text-[11px] font-medium text-cyprus/70 dark:text-sand/70">Panduan fiqih dan hitung persiapan hartamu.</p>
                     </div>
 
                     <!-- Tabs -->
-                    <div class="flex gap-2 mb-4 p-1 bg-sand-light dark:bg-cyprus-dark border border-sand-dark dark:border-cyprus-light rounded-xl overflow-x-auto no-scrollbar">
+                    <div class="flex gap-2 mb-4 p-1 bg-sand-light dark:bg-cyprus-dark border border-sand-dark dark:border-cyprus-light rounded-xl overflow-x-auto no-scrollbar shadow-sm">
                         <button onclick="switchKeuanganTab('zakat')" id="tab-btn-zakat" class="flex-none py-1.5 px-3 text-[11px] font-bold rounded-lg bg-cyprus dark:bg-sand text-sand dark:text-cyprus shadow-sm transition-all whitespace-nowrap">Zakat Maal</button>
                         <button onclick="switchKeuanganTab('qurban')" id="tab-btn-qurban" class="flex-none py-1.5 px-3 text-[11px] font-bold rounded-lg text-cyprus/70 dark:text-sand/70 hover:text-cyprus dark:hover:text-sand transition-all whitespace-nowrap">Qurban</button>
                         <button onclick="switchKeuanganTab('umrah')" id="tab-btn-umrah" class="flex-none py-1.5 px-3 text-[11px] font-bold rounded-lg text-cyprus/70 dark:text-sand/70 hover:text-cyprus dark:hover:text-sand transition-all whitespace-nowrap">Umrah/Haji</button>
                     </div>
 
                     <!-- TAB: ZAKAT -->
-                    <div id="tab-zakat" class="card-custom p-4 rounded-2xl block">
+                    <div id="tab-zakat" class="card-custom p-4 rounded-2xl block shadow-sm">
                         <h3 class="font-bold text-[11px] mb-2 text-cyprus dark:text-sand">Syarat Zakat Maal</h3>
                         <ul class="text-[10px] md:text-xs text-cyprus/80 dark:text-sand/80 list-disc ml-4 mb-4 space-y-1">
                             <li>Harta milik sempurna.</li>
@@ -471,10 +483,30 @@
                                 <i data-lucide="calculator" class="w-5 h-5 text-cyprus dark:text-sand opacity-50"></i>
                             </div>
                         </div>
+
+                        <!-- PANDUAN FIQIH ZAKAT -->
+                        <div class="mt-6 space-y-4">
+                            <h3 class="font-bold text-[11px] text-cyprus dark:text-sand flex items-center gap-1.5 border-b border-sand-dark dark:border-cyprus-light pb-2"><i data-lucide="book-open" class="w-3.5 h-3.5"></i> Panduan Fiqih Zakat</h3>
+                            
+                            <div class="bg-cyprus/5 dark:bg-sand/5 p-3.5 rounded-xl border border-cyprus/10 dark:border-sand/10">
+                                <h4 class="text-[10px] font-bold text-cyprus dark:text-sand mb-2 flex items-center gap-1.5"><i data-lucide="heart" class="w-3 h-3 text-cyprus/50 dark:text-sand/50 fill-current"></i> Niat Zakat Maal</h4>
+                                <p class="text-lg font-arabic text-cyprus dark:text-sand text-right leading-loose mb-2">نَوَيْتُ أَنْ أُخْرِجَ زَكَاةَ مَالِي فَرْضًا لِلَّهِ تَعَالَى</p>
+                                <p class="text-[10px] font-bold text-cyprus dark:text-sand italic mb-1 leading-relaxed">Nawaitu an ukhrija zakaata maali fardhan lillaahi ta'aalaa.</p>
+                                <p class="text-[9px] text-cyprus/70 dark:text-sand/70 leading-relaxed">"Aku niat mengeluarkan zakat hartaku, fardhu karena Allah Ta'ala."</p>
+                            </div>
+
+                            <div class="space-y-2 text-[10px] text-cyprus/80 dark:text-sand/80 leading-relaxed bg-sand-light dark:bg-cyprus-dark p-3.5 rounded-xl border border-sand-dark dark:border-cyprus-light">
+                                <p><strong class="text-cyprus dark:text-sand">Waktu Pelaksanaan:</strong> Wajib dikeluarkan segera setelah harta mengendap 1 tahun hijriyah (Haul) dan mencapai batas minimal (Nisab). Sering disalurkan pada bulan Ramadhan untuk melipatgandakan pahala.</p>
+                                <div class="border-b border-sand-dark dark:border-cyprus-light my-1.5"></div>
+                                <p><strong class="text-cyprus dark:text-sand">8 Asnaf (Penerima):</strong> Fakir, Miskin, Amil (Panitia), Mualaf, Riqab (Memerdekakan budak), Gharimin (Terlilit hutang), Fisabilillah (Pejuang jalan Allah), Ibnu Sabil (Musafir kehabisan bekal).</p>
+                                <div class="border-b border-sand-dark dark:border-cyprus-light my-1.5"></div>
+                                <p><strong class="text-cyprus dark:text-sand">Tata Cara:</strong> Niatkan dalam hati, pisahkan hartanya, lalu serahkan langsung kepada mustahiq atau melalui lembaga amil zakat resmi dan terpercaya.</p>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- TAB: QURBAN -->
-                    <div id="tab-qurban" class="card-custom p-4 rounded-2xl hidden">
+                    <!-- TAB: QURAN -->
+                    <div id="tab-qurban" class="card-custom p-4 rounded-2xl hidden shadow-sm">
                         <h3 class="font-bold text-[11px] mb-2 text-cyprus dark:text-sand">Syarat Qurban</h3>
                         <ul class="text-[10px] md:text-xs text-cyprus/80 dark:text-sand/80 list-disc ml-4 mb-4 space-y-1">
                             <li>Memiliki kelebihan harta pada hari Idul Adha & Tasyrik.</li>
@@ -501,10 +533,30 @@
                                 <p class="text-base font-black text-cyprus dark:text-sand" id="kalkulator-qurban-result">Rp 0</p>
                             </div>
                         </div>
+
+                        <!-- PANDUAN FIQIH QURBAN -->
+                        <div class="mt-6 space-y-4">
+                            <h3 class="font-bold text-[11px] text-cyprus dark:text-sand flex items-center gap-1.5 border-b border-sand-dark dark:border-cyprus-light pb-2"><i data-lucide="book-open" class="w-3.5 h-3.5"></i> Panduan Fiqih Qurban</h3>
+                            
+                            <div class="bg-cyprus/5 dark:bg-sand/5 p-3.5 rounded-xl border border-cyprus/10 dark:border-sand/10">
+                                <h4 class="text-[10px] font-bold text-cyprus dark:text-sand mb-2 flex items-center gap-1.5"><i data-lucide="heart" class="w-3 h-3 text-cyprus/50 dark:text-sand/50 fill-current"></i> Niat Menyembelih Qurban (Diri Sendiri)</h4>
+                                <p class="text-lg font-arabic text-cyprus dark:text-sand text-right leading-loose mb-2">بِسْمِ اللَّهِ، اللَّهُمَّ تَقَبَّلْ مِنِّي</p>
+                                <p class="text-[10px] font-bold text-cyprus dark:text-sand italic mb-1 leading-relaxed">Bismillahi, Allahumma taqabbal minnii.</p>
+                                <p class="text-[9px] text-cyprus/70 dark:text-sand/70 leading-relaxed">"Dengan nama Allah, Ya Allah terimalah (qurban ini) dariku."</p>
+                            </div>
+
+                            <div class="space-y-2 text-[10px] text-cyprus/80 dark:text-sand/80 leading-relaxed bg-sand-light dark:bg-cyprus-dark p-3.5 rounded-xl border border-sand-dark dark:border-cyprus-light">
+                                <p><strong class="text-cyprus dark:text-sand">Waktu Pelaksanaan:</strong> Disembelih sesudah sholat Idul Adha (10 Dzulhijjah) hingga tenggelamnya matahari pada akhir hari Tasyrik (11, 12, 13 Dzulhijjah).</p>
+                                <div class="border-b border-sand-dark dark:border-cyprus-light my-1.5"></div>
+                                <p><strong class="text-cyprus dark:text-sand">Sunnah Shohibul Qurban:</strong> Sangat disunnahkan tidak memotong rambut dan kuku sejak tanggal 1 Dzulhijjah hingga hewannya selesai disembelih. Dianjurkan juga ikut memakan sedikit daging qurbannya (sebagai bentuk syukur).</p>
+                                <div class="border-b border-sand-dark dark:border-cyprus-light my-1.5"></div>
+                                <p><strong class="text-cyprus dark:text-sand">Pembagian Daging:</strong> Dianjurkan dibagi 3: Sepertiga (1/3) dimakan sendiri & keluarga, Sepertiga disedekahkan kepada tetangga/kerabat (meski mampu), dan Sepertiga dibagikan kepada fakir miskin.</p>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- TAB: UMRAH / HAJI -->
-                    <div id="tab-umrah" class="card-custom p-4 rounded-2xl hidden">
+                    <div id="tab-umrah" class="card-custom p-4 rounded-2xl hidden shadow-sm">
                         <h3 class="font-bold text-[11px] mb-2 text-cyprus dark:text-sand">Istitha'ah (Mampu)</h3>
                         <ul class="text-[10px] md:text-xs text-cyprus/80 dark:text-sand/80 list-disc ml-4 mb-4 space-y-1">
                             <li>Mampu membiayai perjalanan, keluarga yang ditinggalkan, dan pelunasan.</li>
@@ -530,95 +582,26 @@
                                 <p class="text-base font-black text-cyprus dark:text-sand" id="kalkulator-umrah-result">Rp 0</p>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- VIEW: JURNAL SYUKUR -->
-            <div id="view-jurnal" class="view-section">
-                <div class="p-4 md:p-8 max-w-3xl mx-auto w-full">
-                    <div class="mb-4 border-b border-sand-dark dark:border-cyprus-light pb-4">
-                        <h2 class="text-lg font-extrabold mb-1 text-cyprus dark:text-sand flex items-center gap-2">
-                            <div class="bg-cyprus/10 dark:bg-sand/10 p-1.5 rounded-lg"><i data-lucide="notebook" class="w-4 h-4"></i></div>
-                            Jurnal Syukur
-                        </h2>
-                        <p class="text-[11px] font-medium text-cyprus/70 dark:text-sand/70">Mengingat kembali nikmat Allah hari ini.</p>
-                    </div>
+                        <!-- PANDUAN FIQIH UMRAH / HAJI -->
+                        <div class="mt-6 space-y-4">
+                            <h3 class="font-bold text-[11px] text-cyprus dark:text-sand flex items-center gap-1.5 border-b border-sand-dark dark:border-cyprus-light pb-2"><i data-lucide="book-open" class="w-3.5 h-3.5"></i> Panduan Fiqih Umrah & Haji</h3>
+                            
+                            <div class="bg-cyprus/5 dark:bg-sand/5 p-3.5 rounded-xl border border-cyprus/10 dark:border-sand/10">
+                                <h4 class="text-[10px] font-bold text-cyprus dark:text-sand mb-2 flex items-center gap-1.5"><i data-lucide="heart" class="w-3 h-3 text-cyprus/50 dark:text-sand/50 fill-current"></i> Niat Umrah (Saat Berada di Miqat)</h4>
+                                <p class="text-lg font-arabic text-cyprus dark:text-sand text-right leading-loose mb-2">لَبَّيْكَ اللَّهُمَّ عُمْرَةً</p>
+                                <p class="text-[10px] font-bold text-cyprus dark:text-sand italic mb-1 leading-relaxed">Labbaikallahumma 'umratan.</p>
+                                <p class="text-[9px] text-cyprus/70 dark:text-sand/70 leading-relaxed">"Aku penuhi panggilan-Mu ya Allah untuk melaksanakan ibadah umrah."</p>
+                            </div>
 
-                    <div class="bg-gradient-to-br from-cyprus to-cyprus-dark dark:from-sand dark:to-sand-dark p-5 rounded-2xl mb-5 shadow-md relative overflow-hidden transition-colors">
-                        <i data-lucide="heart" class="absolute top-2 right-2 text-sand dark:text-cyprus w-16 h-16 opacity-10"></i>
-                        <h3 class="text-sm font-bold text-sand dark:text-cyprus mb-1.5 relative z-10">Ucapkan Alhamdulillah!</h3>
-                        <p class="text-[10px] text-sand/80 dark:text-cyprus/80 leading-relaxed mb-3 relative z-10 italic">"Sesungguhnya jika kamu bersyukur, pasti Kami akan menambah (nikmat) kepadamu..." (QS. Ibrahim: 7)</p>
-                        
-                        <div class="flex items-center gap-2 bg-black/20 p-2 rounded-lg w-max backdrop-blur-sm border border-sand/20 dark:border-cyprus/20 relative z-10">
-                            <span class="text-lg font-black text-sand dark:text-cyprus" id="jurnal-syukur-count">0</span>
-                            <span class="text-[9px] font-bold text-sand dark:text-cyprus uppercase tracking-widest">Nikmat Disyukuri</span>
-                        </div>
-                    </div>
-
-                    <p class="text-[9px] font-bold text-cyprus/50 dark:text-sand/50 uppercase tracking-widest mb-2 ml-1">Ketuk kartu yang sesuai hari ini</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5" id="jurnal-container">
-                        <!-- Jurnal Items generated by JS -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- VIEW: KOMPAS -->
-            <div id="view-kompas" class="view-section">
-                <div class="p-4 md:p-8 flex flex-col items-center justify-center min-h-[60vh] w-full max-w-sm mx-auto">
-                    <div class="mb-6 w-full border-b border-sand-dark dark:border-cyprus-light pb-4 text-left">
-                        <h2 class="text-lg font-extrabold mb-1 text-cyprus dark:text-sand flex items-center gap-2">
-                            <div class="bg-cyprus/10 dark:bg-sand/10 p-1.5 rounded-lg"><i data-lucide="compass" class="w-4 h-4"></i></div>
-                            Arah Kiblat
-                        </h2>
-                        <p class="text-[11px] font-medium text-cyprus/70 dark:text-sand/70">Pastikan HP datar. Butuh HTTPS/Sensor.</p>
-                    </div>
-                    <p id="kompas-error" class="text-red-500 text-xs mb-4 text-center hidden"></p>
-                    
-                    <div class="relative w-48 h-48 md:w-56 md:h-56 flex items-center justify-center mt-4">
-                        <div id="kompas-ring" class="absolute inset-0 rounded-full border-4 border-sand-dark dark:border-cyprus-light transition-transform duration-100 ease-out shadow-sm">
-                            <div class="absolute top-0 left-1/2 -ml-1.5 -mt-1.5 w-3 h-3 bg-red-500 rounded-full"></div>
-                            <span class="absolute top-3 left-1/2 -ml-1.5 font-bold text-cyprus/50 dark:text-sand/50 text-[10px]">N</span>
-                        </div>
-                        <div id="qibla-pointer" class="absolute inset-0 transition-transform duration-100 ease-out flex items-start justify-center pt-5 hidden">
-                            <div class="flex flex-col items-center">
-                                <i data-lucide="compass" class="w-10 h-10 text-cyprus dark:text-sand drop-shadow-md"></i>
-                                <span class="font-bold text-cyprus dark:text-sand mt-1 text-[9px] tracking-widest">KIBLAT</span>
+                            <div class="space-y-2 text-[10px] text-cyprus/80 dark:text-sand/80 leading-relaxed bg-sand-light dark:bg-cyprus-dark p-3.5 rounded-xl border border-sand-dark dark:border-cyprus-light">
+                                <p><strong class="text-cyprus dark:text-sand">Waktu Pelaksanaan:</strong> Umrah dapat dilakukan kapan saja sepanjang tahun. Sedangkan Haji hanya dapat dilaksanakan pada bulan-bulan haji (Syawal, Dzulqa'dah, Dzulhijjah) dengan puncaknya wukuf di Arafah pada 9 Dzulhijjah.</p>
+                                <div class="border-b border-sand-dark dark:border-cyprus-light my-1.5"></div>
+                                <p><strong class="text-cyprus dark:text-sand">Rukun Umrah:</strong> Terdapat 5 rukun mutlak yaitu Ihram (Niat & berpakaian ihram dari titik Miqat), Thawaf (Mengelilingi Ka'bah 7 putaran), Sa'i (Berjalan kaki antara bukit Safa dan Marwah 7 kali), Tahallul (Mencukur atau memendekkan rambut kepala), dan Tertib.</p>
+                                <div class="border-b border-sand-dark dark:border-cyprus-light my-1.5"></div>
+                                <p><strong class="text-cyprus dark:text-sand">Keutamaan:</strong> "Antara satu umrah ke umrah berikutnya adalah penghapus dosa di antara keduanya. Dan haji yang mabrur, tidak ada balasan lain baginya selain surga." (HR. Bukhari & Muslim)</p>
                             </div>
                         </div>
-                        <div class="w-2.5 h-2.5 bg-cyprus dark:bg-sand rounded-full z-10"></div>
-                    </div>
-
-                    <button id="btn-start-kompas" onclick="requestCompassPermission()" class="mt-8 bg-cyprus dark:bg-sand text-sand dark:text-cyprus px-5 py-2.5 text-xs rounded-xl font-bold shadow-md hover:scale-105 transition-transform hidden">
-                        Aktifkan Sensor
-                    </button>
-                    <p id="qibla-angle-text" class="mt-6 text-[11px] font-bold text-cyprus/60 dark:text-sand/60 hidden uppercase tracking-widest">
-                        Sudut Kiblat: <span class="font-black text-cyprus dark:text-sand text-sm" id="qibla-angle-value"></span>
-                    </p>
-                </div>
-            </div>
-
-            <!-- VIEW: MASJID TERDEKAT -->
-            <div id="view-masjid" class="view-section">
-                <div class="p-4 md:p-8 flex flex-col items-center justify-center min-h-[60vh] w-full max-w-sm mx-auto">
-                    <div class="mb-6 w-full border-b border-sand-dark dark:border-cyprus-light pb-4 text-left">
-                        <h2 class="text-lg font-extrabold mb-1 text-cyprus dark:text-sand flex items-center gap-2">
-                            <div class="bg-cyprus/10 dark:bg-sand/10 p-1.5 rounded-lg"><i data-lucide="map-pin" class="w-4 h-4"></i></div>
-                            Masjid Terdekat
-                        </h2>
-                        <p class="text-[11px] font-medium text-cyprus/70 dark:text-sand/70">Temukan tempat ibadah di sekitarmu.</p>
-                    </div>
-                    
-                    <div class="card-custom p-6 rounded-2xl w-full text-center mt-2">
-                        <div class="w-14 h-14 bg-cyprus/10 dark:bg-sand/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i data-lucide="map-pin" class="w-6 h-6 text-cyprus dark:text-sand"></i>
-                        </div>
-                        <h3 class="text-sm font-bold text-cyprus dark:text-sand mb-1.5">Cari via Peta Pintar</h3>
-                        <p class="text-[10px] text-cyprus/70 dark:text-sand/70 mb-5 leading-relaxed px-2">Buka navigasi peta menuju masjid atau mushola terdekat dari lokasimu saat ini.</p>
-                        
-                        <button onclick="bukaPetaMasjid()" class="w-full bg-cyprus dark:bg-sand text-sand dark:text-cyprus px-4 py-2.5 rounded-xl text-xs font-bold shadow-md hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2">
-                            <i data-lucide="navigation" class="w-3.5 h-3.5"></i> Buka Navigasi
-                        </button>
                     </div>
                 </div>
             </div>
@@ -628,13 +611,13 @@
                 <div class="p-4 md:p-8 max-w-3xl mx-auto w-full">
                     <div class="mb-4 border-b border-sand-dark dark:border-cyprus-light pb-4">
                         <h2 class="text-lg font-extrabold mb-1 text-cyprus dark:text-sand flex items-center gap-2">
-                            <div class="bg-cyprus/10 dark:bg-sand/10 p-1.5 rounded-lg"><i data-lucide="swords" class="w-4 h-4"></i></div>
+                            <div class="bg-cyprus/10 dark:bg-sand/10 p-1.5 rounded-lg"><i data-lucide="check-square" class="w-4 h-4"></i></div>
                             Misi Ibadah
                         </h2>
                         <p class="text-[11px] font-medium text-cyprus/70 dark:text-sand/70">Selesaikan misi harian untuk naik level!</p>
                     </div>
 
-                    <div class="bg-gradient-to-br from-cyprus to-cyprus-dark dark:from-sand dark:to-sand-dark p-5 rounded-2xl mb-5 shadow-sm flex flex-row items-center justify-between relative overflow-hidden transition-colors">
+                    <div class="bg-gradient-to-br from-cyprus to-cyprus-dark dark:from-sand dark:to-sand-dark p-5 rounded-2xl mb-5 shadow-lg flex flex-row items-center justify-between relative overflow-hidden transition-colors">
                         <i data-lucide="star" class="absolute top-2 right-2 text-sand dark:text-cyprus w-12 h-12 opacity-20"></i>
                         
                         <div class="flex items-center gap-4 relative z-10">
@@ -643,7 +626,7 @@
                                     <circle cx="50" cy="50" r="42" stroke="currentColor" stroke-width="8" fill="transparent" class="text-cyprus-light dark:text-sand-dark" />
                                     <circle id="tracker-progress-circle" cx="50" cy="50" r="42" stroke="currentColor" stroke-width="8" fill="transparent" class="text-sand dark:text-cyprus transition-all duration-1000 ease-out" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="264" />
                                 </svg>
-                                <div class="absolute flex flex-col items-center justify-center bg-sand dark:bg-cyprus rounded-full w-10 h-10 shadow-inner">
+                                <div class="absolute flex flex-col items-center justify-center bg-sand dark:bg-cyprus rounded-full w-10 h-10 shadow-inner border border-cyprus/20 dark:border-sand/20">
                                     <span class="text-xs font-black text-cyprus dark:text-sand" id="tracker-percentage">0%</span>
                                 </div>
                             </div>
@@ -665,60 +648,15 @@
                 </div>
             </div>
 
-            <!-- VIEW: DOA HARIAN -->
-            <div id="view-doa" class="view-section">
-                <div id="doa-list-view" class="p-4 md:p-8 max-w-4xl mx-auto w-full">
-                    <div class="mb-4 border-b border-sand-dark dark:border-cyprus-light pb-4">
-                        <h2 class="text-lg font-extrabold mb-1 text-cyprus dark:text-sand flex items-center gap-2">
-                            <div class="bg-cyprus/10 dark:bg-sand/10 p-1.5 rounded-lg flex items-center justify-center text-cyprus dark:text-sand">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-4"/><path d="M9 9V5a2 2 0 0 1 4 0v4"/><path d="M5 12V7a2 2 0 0 1 4 0v5"/><path d="M19 12V7a2 2 0 0 0-4 0v5"/><path d="M5 12v2a7 7 0 0 0 14 0v-2"/><path d="M9 12V9"/><path d="M15 12V9"/></svg>
-                            </div>
-                            Doa Harian
-                        </h2>
-                        <p class="text-[11px] font-medium text-cyprus/70 dark:text-sand/70">Kumpulan doa pendek sehari-hari.</p>
-                    </div>
-
-                    <div class="relative mb-5">
-                        <i data-lucide="search" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-cyprus/50 dark:text-sand/50"></i>
-                        <input type="text" id="doa-search" oninput="filterDoa(this.value)" class="w-full bg-sand-light dark:bg-cyprus-dark border border-sand-dark dark:border-cyprus-light rounded-xl py-2.5 pl-9 pr-4 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-cyprus dark:focus:ring-sand shadow-sm transition-colors text-cyprus dark:text-sand placeholder-cyprus/40 dark:placeholder-sand/40" placeholder="Cari doa...">
-                    </div>
-
-                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5" id="doa-list-container">
-                        <!-- Doa cards generated by JS -->
-                    </div>
-                </div>
-
-                <div id="doa-detail-view" class="pb-8 hidden">
-                    <div class="sticky top-0 z-30 bg-sand/90 dark:bg-cyprus/90 backdrop-blur-md p-3 flex items-center gap-3 border-b border-sand-dark dark:border-cyprus-light transition-colors">
-                        <button onclick="closeDoa()" class="p-2.5 bg-sand-light dark:bg-cyprus-dark rounded-lg hover:bg-sand-dark dark:hover:bg-cyprus-light transition-colors text-cyprus dark:text-sand">
-                            <i data-lucide="chevron-left" class="w-4 h-4"></i>
-                        </button>
-                        <h2 class="text-sm font-bold flex-1 truncate text-cyprus dark:text-sand" id="detail-doa-title">Judul Doa</h2>
-                    </div>
-                    <div class="p-4 md:p-8 max-w-2xl mx-auto mt-2">
-                        <div class="card-custom p-5 rounded-2xl flex flex-col relative overflow-hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute top-2 right-2 w-16 h-16 text-cyprus dark:text-sand opacity-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-4"/><path d="M9 9V5a2 2 0 0 1 4 0v4"/><path d="M5 12V7a2 2 0 0 1 4 0v5"/><path d="M19 12V7a2 2 0 0 0-4 0v5"/><path d="M5 12v2a7 7 0 0 0 14 0v-2"/><path d="M9 12V9"/><path d="M15 12V9"/></svg>
-                            <div class="mb-5 relative z-10 text-center">
-                                <p class="text-xl md:text-2xl font-arabic text-cyprus dark:text-sand leading-loose px-2" id="detail-doa-arab"></p>
-                            </div>
-                            <div class="bg-cyprus/5 dark:bg-sand/5 p-3.5 rounded-xl border border-cyprus/10 dark:border-sand/10 relative z-10">
-                                <p class="text-xs font-bold text-cyprus dark:text-sand italic mb-1.5" id="detail-doa-latin"></p>
-                                <p class="text-[10px] text-cyprus/80 dark:text-sand/80 leading-relaxed" id="detail-doa-arti"></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <!-- VIEW: KISAH NABI -->
-            <div id="view-kisah" class="view-section">
+            <div id="view-kisah" class="view-section relative">
                 <div id="kisah-list-view" class="p-4 md:p-8 max-w-3xl mx-auto w-full">
                     <div class="mb-4 border-b border-sand-dark dark:border-cyprus-light pb-4">
                         <h2 class="text-lg font-extrabold mb-1 text-cyprus dark:text-sand flex items-center gap-2">
                             <div class="bg-cyprus/10 dark:bg-sand/10 p-1.5 rounded-lg"><i data-lucide="book" class="w-4 h-4"></i></div>
                             Kisah 25 Nabi
                         </h2>
-                        <p class="text-[11px] font-medium text-cyprus/70 dark:text-sand/70">Sejarah, mukjizat, doa mustajab, dan hikmah aplikatif.</p>
+                        <p class="text-[11px] font-medium text-cyprus/70 dark:text-sand/70">Sejarah, mukjizat, doa mustajab, dan hikmah teladan.</p>
                     </div>
 
                     <div class="relative mb-4">
@@ -729,15 +667,16 @@
                     <div id="kisah-list-container" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
                 </div>
 
-                <div id="kisah-detail-view" class="pb-8 hidden relative z-50">
-                    <div class="sticky top-0 z-[60] bg-sand/90 dark:bg-cyprus/90 backdrop-blur-md p-3 flex items-center gap-3 border-b border-sand-dark dark:border-cyprus-light transition-colors shadow-sm">
-                        <button onclick="closeKisah()" class="relative z-[70] p-2.5 bg-sand-light dark:bg-cyprus-dark rounded-lg hover:bg-sand-dark dark:hover:bg-cyprus-light transition-colors text-cyprus dark:text-sand cursor-pointer active:scale-95">
+                <div id="kisah-detail-view" class="pb-8 hidden relative">
+                    <div class="sticky top-0 z-50 bg-sand/90 dark:bg-cyprus/90 backdrop-blur-md p-3 flex items-center gap-3 border-b border-sand-dark dark:border-cyprus-light transition-colors shadow-sm">
+                        <!-- Perbaikan tombol Back Kisah Nabi (z-index diperjelas, padding disesuaikan) -->
+                        <button onclick="closeKisah()" class="z-50 p-2.5 bg-sand-light dark:bg-cyprus-dark rounded-lg hover:bg-sand-dark dark:hover:bg-cyprus-light border border-sand-dark dark:border-cyprus-light transition-colors text-cyprus dark:text-sand cursor-pointer flex items-center justify-center">
                             <i data-lucide="chevron-left" class="w-4 h-4 pointer-events-none"></i>
                         </button>
                         <h2 class="text-sm font-bold flex-1 truncate text-cyprus dark:text-sand" id="detail-kisah-title">Nabi</h2>
                     </div>
                     <div class="p-4 md:p-8 max-w-2xl mx-auto mt-2">
-                        <div class="card-custom p-6 rounded-2xl relative overflow-hidden mb-4">
+                        <div class="card-custom p-6 rounded-2xl relative overflow-hidden mb-4 shadow-sm">
                             <i data-lucide="book" class="absolute top-4 right-4 w-20 h-20 text-cyprus dark:text-sand opacity-5"></i>
                             <h3 class="text-xl font-black text-cyprus dark:text-sand mb-1" id="detail-kisah-nama"></h3>
                             <p class="text-[11px] font-bold text-cyprus/60 dark:text-sand/60 uppercase tracking-widest mb-5" id="detail-kisah-gelar"></p>
@@ -752,7 +691,6 @@
                                     <ul id="detail-kisah-mukjizat" class="list-disc ml-4 space-y-1"></ul>
                                 </div>
 
-                                <!-- Fitur Baru: Doa Mustajab Nabi -->
                                 <div id="container-doa-nabi" class="mt-4">
                                     <h4 class="font-bold text-cyprus dark:text-sand mb-1.5 flex items-center gap-1.5 border-b border-sand-dark dark:border-cyprus-light pb-1"><i data-lucide="book-open" class="w-3.5 h-3.5"></i> Doa Mustajab Sang Nabi</h4>
                                     <div class="bg-sand-light dark:bg-cyprus-dark p-4 rounded-xl border border-sand-dark dark:border-cyprus-light mt-2 shadow-sm relative overflow-hidden">
@@ -763,14 +701,13 @@
                                     </div>
                                 </div>
 
-                                <!-- Fitur Baru: Aplikasi Kehidupan -->
                                 <div>
                                     <h4 class="font-bold text-cyprus dark:text-sand mb-1.5 flex items-center gap-1.5 border-b border-sand-dark dark:border-cyprus-light pb-1"><i data-lucide="target" class="w-3.5 h-3.5"></i> Aplikasi dalam Kehidupan</h4>
                                     <p id="detail-kisah-praktik" class="text-justify mt-2 leading-relaxed bg-cyprus/10 dark:bg-sand/10 p-3 rounded-lg font-medium"></p>
                                 </div>
 
                                 <div>
-                                    <h4 class="font-bold text-cyprus dark:text-sand mb-1.5 flex items-center gap-1.5 border-b border-sand-dark dark:border-cyprus-light pb-1"><i data-lucide="lightbulb" class="w-3.5 h-3.5"></i> Hikmah & Pesan Moral</h4>
+                                    <h4 class="font-bold text-cyprus dark:text-sand mb-1.5 flex items-center gap-1.5 border-b border-sand-dark dark:border-cyprus-light pb-1"><i data-lucide="lightbulb" class="w-3.5 h-3.5"></i> Hikmah & Pelajaran</h4>
                                     <p id="detail-kisah-hikmah" class="text-justify mt-2 italic text-cyprus/80 dark:text-sand/80"></p>
                                 </div>
                             </div>
@@ -791,7 +728,7 @@
                     </div>
 
                     <!-- TABS PARENTING -->
-                    <div class="flex gap-2 mb-4 p-1 bg-sand-light dark:bg-cyprus-dark border border-sand-dark dark:border-cyprus-light rounded-xl overflow-x-auto no-scrollbar">
+                    <div class="flex gap-2 mb-4 p-1 bg-sand-light dark:bg-cyprus-dark border border-sand-dark dark:border-cyprus-light rounded-xl overflow-x-auto no-scrollbar shadow-sm">
                         <button onclick="switchParentingTab('tips')" id="tab-btn-ptips" class="flex-none py-1.5 px-3 text-[11px] font-bold rounded-lg bg-cyprus dark:bg-sand text-sand dark:text-cyprus shadow-sm transition-all whitespace-nowrap">Tahap & Tips</button>
                         <button onclick="switchParentingTab('doa')" id="tab-btn-pdoa" class="flex-none py-1.5 px-3 text-[11px] font-bold rounded-lg text-cyprus/70 dark:text-sand/70 hover:text-cyprus dark:hover:text-sand transition-all whitespace-nowrap">Doa Ortu</button>
                         <button onclick="switchParentingTab('ceklis')" id="tab-btn-pceklis" class="flex-none py-1.5 px-3 text-[11px] font-bold rounded-lg text-cyprus/70 dark:text-sand/70 hover:text-cyprus dark:hover:text-sand transition-all whitespace-nowrap">Ceklis Harian</button>
@@ -799,7 +736,7 @@
 
                     <!-- TAB: TIPS & TAHAPAN -->
                     <div id="tab-ptips" class="block">
-                        <div class="card-custom p-4 rounded-2xl mb-4">
+                        <div class="card-custom p-4 rounded-2xl mb-4 shadow-sm">
                             <h3 class="text-xs font-bold text-cyprus dark:text-sand mb-2 flex items-center gap-1.5">
                                 <i data-lucide="layers" class="w-4 h-4"></i> Tahap Mendidik Anak (Ali bin Abi Thalib)
                             </h3>
@@ -871,7 +808,7 @@
 
                     <!-- TAB: CEKLIS HARIAN -->
                     <div id="tab-pceklis" class="hidden">
-                        <div class="card-custom p-5 rounded-2xl mb-4 text-center">
+                        <div class="card-custom p-5 rounded-2xl mb-4 text-center shadow-sm">
                             <h3 class="text-sm font-bold text-cyprus dark:text-sand mb-1">Evaluasi Diri Hari Ini</h3>
                             <p class="text-[10px] text-cyprus/80 dark:text-sand/80 mb-4">Sudahkah kita menjadi orang tua yang baik secara emosional hari ini?</p>
                             
@@ -893,38 +830,163 @@
                 </div>
             </div>
 
-            <!-- FOOTER COPYRIGHT -->
-            <footer class="mt-auto p-4 text-center border-t border-sand-dark dark:border-cyprus-light">
-                <p class="text-[9px] text-cyprus/50 dark:text-sand/50 font-bold uppercase tracking-widest">© 2026 Muslim Tracker <br> <span class="font-medium normal-case mt-1 inline-block">Dibuat oleh Fajar Vallen</span></p>
-            </footer>
+            <!-- VIEW: JURNAL SYUKUR (INSPIRASI) -->
+            <div id="view-jurnal" class="view-section">
+                <div class="p-4 md:p-8 max-w-3xl mx-auto w-full">
+                    <div class="mb-4 border-b border-sand-dark dark:border-cyprus-light pb-4">
+                        <h2 class="text-lg font-extrabold mb-1 text-cyprus dark:text-sand flex items-center gap-2">
+                            <div class="bg-cyprus/10 dark:bg-sand/10 p-1.5 rounded-lg"><i data-lucide="notebook" class="w-4 h-4"></i></div>
+                            Jurnal Syukur
+                        </h2>
+                        <p class="text-[11px] font-medium text-cyprus/70 dark:text-sand/70">Mengingat nikmat Allah sekecil apapun mendatangkan kebahagiaan.</p>
+                    </div>
 
-        </div>
+                    <div class="bg-gradient-to-br from-cyprus to-cyprus-dark dark:from-sand dark:to-sand-dark p-5 rounded-2xl mb-5 text-center relative overflow-hidden shadow-lg transition-all duration-500 text-sand dark:text-cyprus">
+                        <i data-lucide="heart" class="absolute top-2 right-2 w-16 h-16 text-sand/10 dark:text-cyprus/10 pointer-events-none"></i>
+                        <h3 class="text-sm font-bold mb-1 relative z-10">Alhamdulillah Hari Ini</h3>
+                        <p class="text-[10px] opacity-80 mb-4 relative z-10">Tandai nikmat yang telah kamu rasakan hari ini.</p>
+                        
+                        <div class="flex items-center justify-center gap-2 mb-2 relative z-10">
+                            <span class="text-3xl font-black" id="jurnal-syukur-count">0</span>
+                            <span class="text-xs font-bold opacity-70 uppercase tracking-widest">/ 8 Syukur</span>
+                        </div>
+                    </div>
 
-        <!-- GLOBAL AUDIO PLAYER (Fixed Bottom with Next/Prev/Close) -->
-        <div id="global-audio-player" class="player-hidden fixed left-0 right-0 z-[70] bg-sand-light dark:bg-cyprus-dark border-t border-sand-dark dark:border-cyprus-light p-2 md:p-3 flex items-center justify-between shadow-[0_-10px_20px_-10px_rgba(0,71,65,0.1)] dark:shadow-[0_-10px_20px_-10px_rgba(0,0,0,0.3)] transition-all duration-300">
-            <div class="flex items-center gap-2 overflow-hidden flex-1">
-                <div class="w-8 h-8 bg-gradient-to-br from-cyprus to-cyprus-dark dark:from-sand dark:to-sand-dark rounded-lg flex items-center justify-center flex-shrink-0 shadow-sm border border-cyprus-light dark:border-sand-dark">
-                    <i data-lucide="volume-2" class="w-4 h-4 text-sand dark:text-cyprus"></i>
-                </div>
-                <div class="flex flex-col truncate pr-2">
-                    <span class="text-[11px] font-bold truncate text-cyprus dark:text-sand" id="audio-title">Title</span>
-                    <span class="text-[9px] text-cyprus/70 dark:text-sand/70 truncate" id="audio-subtitle">Subtitle</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="jurnal-container">
+                        <!-- Syukur Items generated by JS -->
+                    </div>
                 </div>
             </div>
-            <div class="flex items-center gap-1 md:gap-2 pr-1">
-                <button onclick="prevAudio()" class="p-1.5 text-cyprus dark:text-sand hover:text-cyprus-light dark:hover:text-sand-dark transition-colors active:scale-95">
-                    <i data-lucide="skip-back" class="w-4 h-4"></i>
-                </button>
-                <button onclick="toggleAudio()" class="w-8 h-8 flex flex-shrink-0 items-center justify-center rounded-full bg-sand dark:bg-cyprus text-cyprus dark:text-sand hover:bg-sand-dark dark:hover:bg-cyprus-light transition-colors border border-sand-dark dark:border-cyprus-light shadow-sm">
-                    <i data-lucide="play" id="audio-play-icon" fill="currentColor" class="ml-0.5 w-3.5 h-3.5"></i>
-                    <i data-lucide="pause" id="audio-pause-icon" fill="currentColor" class="w-3.5 h-3.5 hidden"></i>
-                </button>
-                <button onclick="nextAudio()" class="p-1.5 text-cyprus dark:text-sand hover:text-cyprus-light dark:hover:text-sand-dark transition-colors active:scale-95">
-                    <i data-lucide="skip-forward" class="w-4 h-4"></i>
-                </button>
-                <button onclick="closeAudioPlayer()" class="p-1.5 ml-1 text-red-500 hover:text-red-600 transition-colors active:scale-95 border-l border-sand-dark dark:border-cyprus-light pl-2">
-                    <i data-lucide="x" class="w-4 h-4"></i>
-                </button>
+
+            <!-- VIEW: MASJID TERDEKAT -->
+            <div id="view-masjid" class="view-section">
+                <div class="p-4 md:p-8 flex flex-col items-center justify-center min-h-[60vh] w-full max-w-sm mx-auto">
+                    <div class="mb-6 w-full border-b border-sand-dark dark:border-cyprus-light pb-4 text-left">
+                        <h2 class="text-lg font-extrabold mb-1 text-cyprus dark:text-sand flex items-center gap-2">
+                            <div class="bg-cyprus/10 dark:bg-sand/10 p-1.5 rounded-lg"><i data-lucide="map-pin" class="w-4 h-4"></i></div>
+                            Masjid Terdekat
+                        </h2>
+                        <p class="text-[11px] font-medium text-cyprus/70 dark:text-sand/70">Temukan tempat ibadah di sekitarmu.</p>
+                    </div>
+                    
+                    <div class="card-custom p-6 rounded-2xl w-full text-center mt-2 shadow-sm">
+                        <div class="w-14 h-14 bg-cyprus/10 dark:bg-sand/10 rounded-full flex items-center justify-center mx-auto mb-4 text-cyprus dark:text-sand">
+                            <i data-lucide="map-pin" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-sm font-bold text-cyprus dark:text-sand mb-1.5">Cari via Peta Pintar</h3>
+                        <p class="text-[10px] text-cyprus/70 dark:text-sand/70 mb-5 leading-relaxed px-2">Buka navigasi peta menuju masjid atau mushola terdekat dari lokasimu saat ini.</p>
+                        
+                        <button onclick="bukaPetaMasjid()" class="w-full bg-cyprus dark:bg-sand text-sand dark:text-cyprus px-4 py-2.5 rounded-xl text-xs font-bold shadow-md hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2">
+                            <i data-lucide="navigation" class="w-3.5 h-3.5"></i> Buka Navigasi
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW: KOMPAS -->
+            <div id="view-kompas" class="view-section">
+                <div class="p-4 md:p-8 flex flex-col items-center justify-center min-h-[70vh] w-full max-w-sm mx-auto">
+                    <div class="mb-6 border-b border-sand-dark dark:border-cyprus-light pb-4 w-full">
+                        <h2 class="text-lg font-extrabold mb-1 text-cyprus dark:text-sand flex items-center gap-2">
+                            <div class="bg-cyprus/10 dark:bg-sand/10 p-1.5 rounded-lg"><i data-lucide="compass" class="w-4 h-4"></i></div>
+                            Arah Kiblat
+                        </h2>
+                        <p class="text-[11px] font-medium text-cyprus/70 dark:text-sand/70">Pastikan GPS aktif. Jauhkan HP dari benda magnetik.</p>
+                    </div>
+                    <div id="kompas-error" class="hidden text-xs text-red-500 mb-4 font-bold bg-red-100 p-2 rounded"></div>
+                    
+                    <div class="relative w-64 h-64 mx-auto flex items-center justify-center mt-4">
+                        <div id="kompas-ring" class="absolute inset-0 rounded-full border-4 border-cyprus dark:border-sand shadow-lg flex items-center justify-center transition-transform duration-100 ease-out bg-sand-light dark:bg-cyprus-dark">
+                            <div class="absolute top-2 text-xs font-bold text-cyprus dark:text-sand">U</div>
+                            <div class="absolute bottom-2 text-xs font-bold text-cyprus dark:text-sand">S</div>
+                            <div class="absolute right-2 text-xs font-bold text-cyprus dark:text-sand">T</div>
+                            <div class="absolute left-2 text-xs font-bold text-cyprus dark:text-sand">B</div>
+                        </div>
+                        <div id="qibla-pointer" class="absolute inset-0 flex items-start justify-center hidden transition-transform duration-100 ease-out z-10">
+                            <i data-lucide="navigation" class="w-10 h-10 text-orange-500 fill-orange-500 mt-8 transform -rotate-45"></i>
+                        </div>
+                        <div class="w-4 h-4 bg-cyprus dark:bg-sand rounded-full z-20 shadow-md"></div>
+                    </div>
+                    
+                    <button id="btn-start-kompas" onclick="requestCompassPermission()" class="mt-8 bg-cyprus dark:bg-sand text-sand dark:text-cyprus px-6 py-3 rounded-xl text-xs font-bold shadow-md hover:scale-105 transition-all flex items-center gap-2">
+                        <i data-lucide="scan" class="w-4 h-4"></i> Mulai Kompas
+                    </button>
+                    
+                    <div id="qibla-angle-text" class="hidden mt-6 text-center">
+                        <p class="text-[10px] text-cyprus/70 dark:text-sand/70 uppercase tracking-widest font-bold">Derajat Kiblat</p>
+                        <p id="qibla-angle-value" class="text-2xl font-black text-cyprus dark:text-sand">--°</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW: DOA HARIAN -->
+            <div id="view-doa" class="view-section">
+                <div id="doa-list-view" class="p-4 md:p-8 max-w-4xl mx-auto w-full">
+                    <div class="mb-4 border-b border-sand-dark dark:border-cyprus-light pb-4">
+                        <h2 class="text-lg font-extrabold mb-1 text-cyprus dark:text-sand flex items-center gap-2">
+                            <div class="bg-cyprus/10 dark:bg-sand/10 p-1.5 rounded-lg flex items-center justify-center text-cyprus dark:text-sand">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-4"/><path d="M9 9V5a2 2 0 0 1 4 0v4"/><path d="M5 12V7a2 2 0 0 1 4 0v5"/><path d="M19 12V7a2 2 0 0 0-4 0v5"/><path d="M5 12v2a7 7 0 0 0 14 0v-2"/><path d="M9 12V9"/><path d="M15 12V9"/></svg>
+                            </div>
+                            Doa Harian
+                        </h2>
+                        <p class="text-[11px] font-medium text-cyprus/70 dark:text-sand/70">Kumpulan doa pendek sehari-hari.</p>
+                    </div>
+
+                    <div class="relative mb-5">
+                        <i data-lucide="search" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-cyprus/50 dark:text-sand/50"></i>
+                        <input type="text" id="doa-search" oninput="filterDoa(this.value)" class="w-full bg-sand-light dark:bg-cyprus-dark border border-sand-dark dark:border-cyprus-light rounded-xl py-2.5 pl-9 pr-4 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-cyprus dark:focus:ring-sand shadow-sm transition-colors text-cyprus dark:text-sand placeholder-cyprus/40 dark:placeholder-sand/40" placeholder="Cari doa...">
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5" id="doa-list-container">
+                        <!-- Doa cards generated by JS -->
+                    </div>
+                </div>
+
+                <div id="doa-detail-view" class="pb-8 hidden relative">
+                    <div class="sticky top-0 z-50 bg-sand/90 dark:bg-cyprus/90 backdrop-blur-md p-3 flex items-center gap-3 border-b border-sand-dark dark:border-cyprus-light transition-colors shadow-sm">
+                        <button onclick="closeDoa()" class="z-50 p-2.5 bg-sand-light dark:bg-cyprus-dark rounded-lg hover:bg-sand-dark dark:hover:bg-cyprus-light border border-sand-dark dark:border-cyprus-light transition-colors text-cyprus dark:text-sand flex items-center justify-center">
+                            <i data-lucide="chevron-left" class="w-4 h-4 pointer-events-none"></i>
+                        </button>
+                        <h2 class="text-sm font-bold flex-1 truncate text-cyprus dark:text-sand" id="detail-doa-title">Judul Doa</h2>
+                    </div>
+                    <div class="p-4 md:p-8 max-w-2xl mx-auto mt-2">
+                        <div class="card-custom p-5 rounded-2xl flex flex-col relative overflow-hidden shadow-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute top-2 right-2 w-16 h-16 text-cyprus dark:text-sand opacity-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-4"/><path d="M9 9V5a2 2 0 0 1 4 0v4"/><path d="M5 12V7a2 2 0 0 1 4 0v5"/><path d="M19 12V7a2 2 0 0 0-4 0v5"/><path d="M5 12v2a7 7 0 0 0 14 0v-2"/><path d="M9 12V9"/><path d="M15 12V9"/></svg>
+                            <div class="mb-5 relative z-10 text-center">
+                                <p class="text-xl md:text-2xl font-arabic text-cyprus dark:text-sand leading-loose px-2" id="detail-doa-arab"></p>
+                            </div>
+                            <div class="bg-cyprus/5 dark:bg-sand/5 p-3.5 rounded-xl border border-cyprus/10 dark:border-sand/10 relative z-10">
+                                <p class="text-xs font-bold text-cyprus dark:text-sand italic mb-1.5" id="detail-doa-latin"></p>
+                                <p class="text-[10px] text-cyprus/80 dark:text-sand/80 leading-relaxed" id="detail-doa-arti"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- End of main-scroll-area -->
+
+        <!-- AUDIO PLAYER GLOBAL -->
+        <div id="global-audio-player" class="fixed left-0 right-0 md:left-64 player-hidden p-3 z-50 transition-all duration-300">
+            <div class="max-w-2xl mx-auto bg-gradient-to-r from-cyprus-dark to-cyprus dark:from-sand dark:to-sand-dark backdrop-blur-xl rounded-2xl shadow-2xl border border-cyprus-light/50 dark:border-sand-dark/50 p-3 flex items-center justify-between text-sand dark:text-cyprus">
+                <div class="flex items-center gap-3 overflow-hidden flex-1">
+                    <div class="bg-sand/20 dark:bg-cyprus/20 p-2 rounded-full flex-shrink-0 animate-pulse">
+                        <i data-lucide="music" class="w-4 h-4 text-sand dark:text-cyprus"></i>
+                    </div>
+                    <div class="truncate">
+                        <p id="audio-title" class="text-xs font-bold truncate">Memuat...</p>
+                        <p id="audio-subtitle" class="text-[10px] opacity-80 truncate">Mohon tunggu</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 flex-shrink-0 ml-2">
+                    <button onclick="prevAudio()" class="p-2 hover:bg-sand/20 dark:hover:bg-cyprus/20 rounded-full transition-colors active:scale-95"><i data-lucide="skip-back" class="w-4 h-4"></i></button>
+                    <button onclick="toggleAudio()" class="p-2.5 bg-sand dark:bg-cyprus text-cyprus dark:text-sand rounded-full hover:scale-105 active:scale-95 transition-all shadow-md">
+                        <i data-lucide="play" id="audio-play-icon" class="w-4 h-4 ml-0.5 hidden fill-current"></i>
+                        <i data-lucide="pause" id="audio-pause-icon" class="w-4 h-4 hidden fill-current"></i>
+                    </button>
+                    <button onclick="nextAudio()" class="p-2 hover:bg-sand/20 dark:hover:bg-cyprus/20 rounded-full transition-colors active:scale-95"><i data-lucide="skip-forward" class="w-4 h-4"></i></button>
+                    <button onclick="closeAudioPlayer()" class="p-2 ml-1 hover:bg-red-500/20 text-sand/70 hover:text-red-300 dark:text-cyprus/70 dark:hover:text-red-700 rounded-full transition-colors"><i data-lucide="x" class="w-4 h-4"></i></button>
+                </div>
             </div>
         </div>
 
@@ -1276,47 +1338,6 @@
               hikmah: "Islam adalah rahmat bagi seluruh alam. Tidak ada lagi Nabi dan Rasul setelah beliau. Syariat beliau akan relevan dan mengayomi kehidupan manusia hingga kiamat tiba." }
         ];
 
-        // --- GLOBAL FUNCTION UNTUK KISAH NABI ---
-        window.closeKisah = function() {
-            const detailView = document.getElementById('kisah-detail-view');
-            const listView = document.getElementById('kisah-list-view');
-            if (detailView && listView) {
-                detailView.classList.add('hidden');
-                listView.classList.remove('hidden');
-                document.getElementById('kisah-search').value = ''; 
-                renderKisahList();
-                document.getElementById('main-scroll-area').scrollTop = 0;
-            }
-        };
-
-        window.openKisah = function(idx) {
-            document.getElementById('kisah-list-view').classList.add('hidden'); 
-            document.getElementById('kisah-detail-view').classList.remove('hidden');
-            const nabi = KISAH_NABI[idx];
-            document.getElementById('detail-kisah-title').innerText = nabi.nama;
-            document.getElementById('detail-kisah-nama').innerText = nabi.nama;
-            document.getElementById('detail-kisah-gelar').innerText = nabi.gelar;
-            document.getElementById('detail-kisah-cerita').innerText = nabi.kisah;
-            document.getElementById('detail-kisah-hikmah').innerText = nabi.hikmah;
-            document.getElementById('detail-kisah-praktik').innerText = nabi.praktik;
-            
-            let mkHtml = '';
-            nabi.mukjizat.forEach(m => mkHtml += `<li class="leading-relaxed pl-1">${m}</li>`);
-            document.getElementById('detail-kisah-mukjizat').innerHTML = mkHtml;
-            
-            const doaContainer = document.getElementById('container-doa-nabi');
-            if(nabi.doa_arab) {
-                doaContainer.classList.remove('hidden');
-                document.getElementById('detail-kisah-doa-arab').innerText = nabi.doa_arab;
-                document.getElementById('detail-kisah-doa-latin').innerText = nabi.doa_latin;
-                document.getElementById('detail-kisah-doa-arti').innerText = nabi.doa_arti;
-            } else {
-                doaContainer.classList.add('hidden');
-            }
-            
-            document.getElementById('main-scroll-area').scrollTop = 0;
-        };
-
         var HARI_BESAR = [
             { day: 1, month: 1, nama: "Tahun Baru Islam", icon: "🌙", strategi: "Muhasabah, buat target ibadah tahunan." },
             { day: 9, month: 1, nama: "Puasa Tasu'a", icon: "🤲", strategi: "Puasa sunnah persiapan Asyura." },
@@ -1335,6 +1356,20 @@
             { judul: "Doa Sebelum Tidur", arab: "بِسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا", latin: "Bismikallahumma amuutu wa ahyaa", arti: "Dengan nama-Mu ya Allah, aku mati dan aku hidup." },
             { judul: "Doa Bangun Tidur", arab: "الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ", latin: "Alhamdullillahilladzi ahyaanaa bada maa amaatanaa wa ilaihin nushur", arti: "Segala puji bagi Allah, yang telah membangunkan kami setelah menidurkan kami, dan kepada-Nya lah kami dibangkitkan." },
             { judul: "Doa Sapu Jagat", arab: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ", latin: "Robbanaa aatinaa fid-dunyaa hasanah wa fil-aakhiroti hasanah wa qinaa 'adzaaban-naar", arti: "Ya Tuhan kami, berilah kami kebaikan di dunia dan kebaikan di akhirat, dan lindungilah kami dari azab neraka." }
+        ];
+
+        var PARENTING_DOA = [
+            { judul: "Doa Meminta Anak Sholeh", arab: "رَبِّ هَبْ لِي مِنَ الصَّالِحِينَ", latin: "Robbi hab lii minash shoolihiin.", arti: "Ya Tuhanku, anugerahkanlah kepadaku (seorang anak) yang termasuk orang-orang yang saleh." },
+            { judul: "Doa Agar Anak Rajin Sholat", arab: "رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ وَمِنْ ذُرِّيَّتِي ۚ رَبَّنَا وَتَقَبَّلْ دُعَاءِ", latin: "Robbij'alnii muqiimash sholaati wa min dzurriyyatii, robbanaa wa taqobbal du'aa'.", arti: "Ya Tuhanku, jadikanlah aku dan anak cucuku orang-orang yang tetap mendirikan shalat, ya Tuhan kami, perkenankanlah doaku." },
+            { judul: "Doa Kebaikan Keluarga", arab: "رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا", latin: "Robbanaa hab lanaa min azwaajinaa wa dzurriyyaatinaa qurrota a'yuniw waj'alnaa lil muttaqiina imaamaa.", arti: "Ya Tuhan kami, anugerahkanlah kepada kami istri-istri kami dan keturunan kami sebagai penyenang hati, dan jadikanlah kami imam bagi orang-orang yang bertakwa." }
+        ];
+
+        var PARENTING_CEKLIS = [
+            { id: 'peluk', label: 'Memeluk & mencium anak hari ini.' },
+            { id: 'dengar', label: 'Mendengarkan ceritanya tanpa main HP.' },
+            { id: 'sabar', label: 'Menahan amarah & tidak membentak.' },
+            { id: 'teladan', label: 'Mencontohkan ibadah (sholat/ngaji) di depannya.' },
+            { id: 'doa', label: 'Mendoakan kebaikannya secara lisan.' }
         ];
 
         var DZIKIR_LIST = [
@@ -1460,6 +1495,7 @@
             if(quickAccess) quickAccess.innerHTML = MENU_DATA.filter(i => i.quickAccess).map(item => `<button onclick="switchTab('${item.id}')" class="flex flex-col items-center justify-center gap-2 p-3 bg-sand-light dark:bg-cyprus-dark rounded-2xl border border-sand-dark dark:border-cyprus-light shadow-sm hover:border-cyprus dark:hover:border-sand active:scale-95 transition-all"><div class="bg-gradient-to-br from-cyprus to-cyprus-dark dark:from-sand dark:to-sand-dark p-2.5 rounded-full text-sand dark:text-cyprus shadow-sm flex items-center justify-center">${item.customSvg ? `<div class="w-4 h-4 flex items-center justify-center">${item.customSvg}</div>` : `<i data-lucide="${item.icon}" class="w-4 h-4"></i>`}</div><span class="font-bold text-[9px] text-center text-cyprus dark:text-sand">${item.label}</span></button>`).join('');
         }
 
+        // --- STREAMING_CHUNK:Navigation Router Logic... ---
         function switchTab(tabId) {
             activeTab = tabId;
             document.querySelectorAll('.nav-btn').forEach(btn => {
@@ -1494,6 +1530,7 @@
             if(tabId === 'jurnal') renderJurnal();
         }
 
+        // --- STREAMING_CHUNK:Global Audio Player Logic... ---
         function playAudioList(list, index) { audioPlaylist = list; audioIndex = index; loadAndPlayCurrent(); }
         function loadAndPlayCurrent() {
             const track = audioPlaylist[audioIndex]; if (!track) return;
@@ -1501,11 +1538,11 @@
             document.getElementById('audio-title').innerText = track.title; document.getElementById('audio-subtitle').innerText = track.subtitle;
             const playerUI = document.getElementById('global-audio-player'); playerUI.classList.remove('player-hidden'); playerUI.classList.add('player-visible'); 
             
-            document.querySelectorAll('.ayat-card-container').forEach(el => el.classList.remove('ring-2', 'ring-cyprus', 'dark:ring-sand', 'scale-[1.02]', 'shadow-lg'));
+            document.querySelectorAll('.ayat-card-container').forEach(el => el.classList.remove('ayat-highlight'));
             if(track.type === 'quran' && track.cardId) {
                 const card = document.getElementById(track.cardId);
                 if(card) {
-                    card.classList.add('ring-2', 'ring-cyprus', 'dark:ring-sand', 'scale-[1.02]', 'shadow-lg');
+                    card.classList.add('ayat-highlight');
                     card.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
             }
@@ -1516,7 +1553,7 @@
         function closeAudioPlayer() { 
             audioElement.pause(); isPlaying = false; currentAudioUrl = null; 
             const playerUI = document.getElementById('global-audio-player'); playerUI.classList.remove('player-visible'); playerUI.classList.add('player-hidden'); 
-            document.querySelectorAll('.ayat-card-container').forEach(el => el.classList.remove('ring-2', 'ring-cyprus', 'dark:ring-sand', 'scale-[1.02]', 'shadow-lg'));
+            document.querySelectorAll('.ayat-card-container').forEach(el => el.classList.remove('ayat-highlight'));
             updateAudioUI(); 
         }
         function toggleAudio() { if(!currentAudioUrl) return; isPlaying ? audioElement.pause() : audioElement.play(); isPlaying = !isPlaying; updateAudioUI(); }
@@ -1548,6 +1585,7 @@
             oscillator.start(audioCtx.currentTime); oscillator.stop(audioCtx.currentTime + 0.05);
         }
 
+        // --- STREAMING_CHUNK:API Fetching Logic... ---
         function getLocation() {
             if (navigator.geolocation) navigator.geolocation.getCurrentPosition((pos) => { userLocation = { lat: pos.coords.latitude, lon: pos.coords.longitude }; fetchTimings(); fetchCityName(userLocation.lat, userLocation.lon); }, (err) => { document.querySelectorAll('.lokasi-text').forEach(el => el.innerText = "Lokasi Tidak Aktif"); }, { enableHighAccuracy: true });
         }
@@ -1582,6 +1620,7 @@
             if(desc.classList.contains('hidden')) { desc.classList.remove('hidden'); icon.style.transform = 'rotate(180deg)'; } else { desc.classList.add('hidden'); icon.style.transform = 'rotate(0deg)'; }
         }
 
+        // --- STREAMING_CHUNK:Rendering Components (Jadwal, Quran, Kalender)... ---
         function renderJadwalUI() {
             if (!todayTimingsData) return;
             const renderList = ['Imsak', 'Fajr', 'Sunrise', 'Dhuha', 'Dhuhr', 'Asr', 'Maghrib', 'Isha', 'Lastthird'];
@@ -1589,7 +1628,6 @@
             renderList.forEach(key => {
                 const info = JADWAL_INFO[key]; const time = todayTimingsData[key] || '-:-';
                 const tag = info.isSunnah ? '<span class="px-2 py-0.5 bg-cyprus/10 dark:bg-sand/10 text-cyprus dark:text-sand text-[9px] rounded-full font-bold">Sunnah</span>' : '';
-                const titleColor = info.isSunnah ? 'text-cyprus dark:text-sand' : 'text-cyprus dark:text-sand';
                 let sunnahCardsHtml = '';
                 if(info.qobliyah !== '-' || info.badiyah !== '-') {
                     sunnahCardsHtml = `<div class="grid grid-cols-2 gap-2 mb-1">
@@ -1597,19 +1635,16 @@
                         <div class="bg-sand dark:bg-cyprus p-2.5 rounded-xl border border-sand-dark dark:border-cyprus-light"><p class="text-[9px] text-cyprus/60 dark:text-sand/60 uppercase tracking-widest mb-0.5 font-bold">Ba'diyah (Sesudah)</p><p class="text-xs font-bold text-cyprus dark:text-sand">${info.badiyah}</p></div>
                     </div>`;
                 }
-                html += `<div class="card-custom rounded-2xl overflow-hidden text-left mb-3">
+                html += `<div class="card-custom rounded-2xl overflow-hidden text-left mb-3 shadow-sm">
                     <button onclick="toggleJadwalDesc('${key}')" class="w-full flex justify-between items-center p-4 hover:bg-sand-dark/50 dark:hover:bg-cyprus-light/50 focus:outline-none transition-colors">
                         <div class="flex flex-col text-left gap-1">
-                            <div class="flex items-center gap-2"><span class="text-sm md:text-base font-bold ${titleColor}">${info.name}</span>${tag}</div>
+                            <div class="flex items-center gap-2"><span class="text-sm md:text-base font-bold text-cyprus dark:text-sand">${info.name}</span>${tag}</div>
                             <span class="text-[13px] font-arabic text-cyprus/70 dark:text-sand/70">${info.arab}</span>
                         </div>
                         <div class="flex items-center gap-3"><span class="text-lg font-bold text-cyprus dark:text-sand">${time}</span><i data-lucide="chevron-down" id="jadwal-icon-${key}" class="w-4 h-4 text-cyprus/50 dark:text-sand/50 transition-transform"></i></div>
                     </button>
                     <div id="jadwal-desc-${key}" class="hidden px-4 pb-4 pt-3 border-t border-sand-dark dark:border-cyprus-light space-y-4">
-                        
                         ${sunnahCardsHtml}
-
-                        <!-- Widget Niat -->
                         <div class="bg-cyprus/5 dark:bg-sand/5 p-4 rounded-xl border border-cyprus/10 dark:border-sand/10 relative overflow-hidden">
                             <i data-lucide="book-open" class="absolute -top-2 -right-2 w-12 h-12 text-cyprus/5 dark:text-sand/5"></i>
                             <h4 class="text-[11px] font-bold text-cyprus dark:text-sand mb-2 flex items-center gap-1.5 relative z-10"><i data-lucide="heart" class="w-3.5 h-3.5"></i> ${info.niat_title}</h4>
@@ -1617,20 +1652,15 @@
                             <p class="text-[11px] font-bold text-cyprus dark:text-sand italic mb-1.5 leading-relaxed relative z-10">${info.niat_latin}</p>
                             <p class="text-[10px] text-cyprus/70 dark:text-sand/70 leading-relaxed relative z-10">${info.niat_arti}</p>
                         </div>
-
-                        <!-- Tata Cara Pengerjaan -->
                         <div>
                             <h4 class="text-[11px] font-bold text-cyprus dark:text-sand mb-1.5 flex items-center gap-1.5 border-b border-sand-dark dark:border-cyprus-light pb-1.5"><i data-lucide="check-circle" class="w-3.5 h-3.5"></i> Tata Cara Pengerjaan</h4>
                             <p class="text-[11px] text-cyprus/80 dark:text-sand/80 leading-relaxed mt-2"><span class="font-bold text-cyprus dark:text-sand px-1.5 py-0.5 bg-cyprus/10 dark:bg-sand/10 rounded mr-1">${info.rakaat}</span> ${info.cara}</p>
                             <p class="text-[10px] text-cyprus/60 dark:text-sand/60 italic mt-2"><i data-lucide="info" class="w-3 h-3 inline-block"></i> Batas Waktu: ${info.desc}</p>
                         </div>
-
-                        <!-- Manfaat & Keutamaan -->
                         <div>
                             <h4 class="text-[11px] font-bold text-cyprus dark:text-sand mb-1.5 flex items-center gap-1.5 border-b border-sand-dark dark:border-cyprus-light pb-1.5"><i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Keutamaan & Manfaat</h4>
                             <p class="text-[11px] text-cyprus/80 dark:text-sand/80 leading-relaxed mt-2 bg-cyprus/10 dark:bg-sand/10 p-2.5 rounded-lg border-l-2 border-cyprus dark:border-sand">${info.manfaat}</p>
                         </div>
-
                     </div>
                 </div>`;
             });
@@ -1767,15 +1797,12 @@
             });
 
             let html = '';
-            if(ayyamul.length > 0) {
-                html += `<div class="flex justify-between items-center py-1.5 border-b border-sand-dark dark:border-cyprus-light"><span class="font-bold text-cyprus dark:text-sand">Ayyamul Bidh</span><span class="text-cyprus/70 dark:text-sand/70">${ayyamul.join(', ')}</span></div>`;
-            }
-            if(senkam.length > 0) {
-                html += `<div class="flex justify-between items-start py-1.5"><span class="font-bold text-cyprus dark:text-sand">Senin & Kamis</span><span class="text-cyprus/70 dark:text-sand/70 text-right w-1/2">${senkam.join(', ')}</span></div>`;
-            }
+            if(ayyamul.length > 0) html += `<div class="flex justify-between items-center py-1.5 border-b border-sand-dark dark:border-cyprus-light"><span class="font-bold text-cyprus dark:text-sand">Ayyamul Bidh</span><span class="text-cyprus/70 dark:text-sand/70">${ayyamul.join(', ')}</span></div>`;
+            if(senkam.length > 0) html += `<div class="flex justify-between items-start py-1.5"><span class="font-bold text-cyprus dark:text-sand">Senin & Kamis</span><span class="text-cyprus/70 dark:text-sand/70 text-right w-1/2">${senkam.join(', ')}</span></div>`;
             document.getElementById('kalender-puasa-list').innerHTML = html || '<p class="text-cyprus/50 dark:text-sand/50 italic">Tidak ada jadwal.</p>';
         }
 
+        // --- STREAMING_CHUNK:Rendering Tracker & Jurnal Features... ---
         function renderAsmaulHusna() {
             const container = document.getElementById('asmaulhusna-container');
             if(container && container.children.length > 0) return; 
@@ -1783,17 +1810,13 @@
             if (asmaulHusnaAudioList.length === 0) {
                 for (let i = 1; i <= 99; i++) {
                     const numberStr = i.toString().padStart(2, '0');
-                    asmaulHusnaAudioList.push({
-                        url: `https://asmaul-husna-api-coral.vercel.app/audio/${numberStr}.mp3`,
-                        title: ASMAUL_HUSNA[i-1].latin,
-                        subtitle: ASMAUL_HUSNA[i-1].arti
-                    });
+                    asmaulHusnaAudioList.push({ url: `https://asmaul-husna-api-coral.vercel.app/audio/${numberStr}.mp3`, title: ASMAUL_HUSNA[i-1].latin, subtitle: ASMAUL_HUSNA[i-1].arti });
                 }
             }
 
             let html = '';
             ASMAUL_HUSNA.forEach((asma, index) => {
-                html += `<div class="card-custom p-3 rounded-2xl flex flex-col items-center justify-center text-center relative overflow-hidden transition-colors group">
+                html += `<div class="card-custom p-3 rounded-2xl flex flex-col items-center justify-center text-center relative overflow-hidden transition-colors group shadow-sm">
                     <span class="absolute top-1.5 left-1.5 text-[8px] font-bold text-cyprus/30 dark:text-sand/30">${index + 1}</span>
                     <button onclick='playAudioList(${JSON.stringify(asmaulHusnaAudioList)}, ${index})' data-url="https://asmaul-husna-api-coral.vercel.app/audio/${(index+1).toString().padStart(2, '0')}.mp3" class="absolute top-1.5 right-1.5 btn-audio-control text-cyprus dark:text-sand bg-cyprus/10 dark:bg-sand/10 p-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:scale-110">
                         <i data-lucide="volume-2" class="w-3 h-3"></i>
@@ -1808,10 +1831,8 @@
         }
 
         function playAllAsmaulHusna() {
-            renderAsmaulHusna(); // Pastikan playlist 99 asma sudah di-load
-            if (asmaulHusnaAudioList.length > 0) {
-                playAudioList(asmaulHusnaAudioList, 0);
-            }
+            renderAsmaulHusna(); 
+            if (asmaulHusnaAudioList.length > 0) playAudioList(asmaulHusnaAudioList, 0);
         }
 
         function switchKeuanganTab(tab) {
@@ -1855,7 +1876,7 @@
                 const iconTextClass = isChecked ? 'text-sand dark:text-cyprus' : 'text-cyprus dark:text-sand';
 
                 html += `
-                <div id="syukur-card-${item.id}" onclick="toggleSyukur('${item.id}')" class="p-3.5 rounded-2xl flex items-center gap-3 cursor-pointer transition-all active:scale-95 border ${borderClass}">
+                <div id="syukur-card-${item.id}" onclick="toggleSyukur('${item.id}')" class="p-3.5 rounded-2xl flex items-center gap-3 cursor-pointer transition-all active:scale-95 border ${borderClass} shadow-sm">
                     <div id="syukur-icon-${item.id}" class="w-8 h-8 rounded-full ${iconBgClass} flex items-center justify-center flex-shrink-0 ${iconTextClass} transition-colors shadow-sm">
                         ${iconHtml}
                     </div>
@@ -1874,14 +1895,14 @@
             const card = document.getElementById(`syukur-card-${id}`); const icon = document.getElementById(`syukur-icon-${id}`);
 
             if (isChecking) {
-                card.className = "p-3.5 rounded-2xl flex items-center gap-3 cursor-pointer transition-all active:scale-95 border-cyprus dark:border-sand bg-cyprus/10 dark:bg-sand/10 border";
+                card.className = "p-3.5 rounded-2xl flex items-center gap-3 cursor-pointer transition-all active:scale-95 border-cyprus dark:border-sand bg-cyprus/10 dark:bg-sand/10 border shadow-sm";
                 card.querySelector('h3').className = "text-xs font-bold mb-0.5 text-cyprus dark:text-sand";
                 icon.className = "w-8 h-8 rounded-full bg-cyprus dark:bg-sand flex items-center justify-center flex-shrink-0 text-sand dark:text-cyprus transition-colors shadow-sm";
                 icon.innerHTML = '<i data-lucide="check" class="w-4 h-4 text-current"></i>';
                 if(window.navigator && window.navigator.vibrate) window.navigator.vibrate(40);
                 triggerConfetti();
             } else {
-                card.className = "p-3.5 rounded-2xl flex items-center gap-3 cursor-pointer transition-all active:scale-95 card-custom";
+                card.className = "p-3.5 rounded-2xl flex items-center gap-3 cursor-pointer transition-all active:scale-95 card-custom shadow-sm";
                 card.querySelector('h3').className = "text-xs font-bold mb-0.5 text-cyprus dark:text-sand";
                 icon.className = "w-8 h-8 rounded-full bg-sand dark:bg-cyprus flex items-center justify-center flex-shrink-0 text-cyprus dark:text-sand transition-colors shadow-sm";
                 icon.innerHTML = '<i data-lucide="heart" class="w-4 h-4 text-current"></i>';
@@ -1937,7 +1958,7 @@
                     const bgClass = ckd ? 'bg-cyprus/10 dark:bg-sand/10 border-cyprus/30 dark:border-sand/30' : 'card-custom';
                     const xpBadge = !ckd ? `<span class="text-[9px] font-bold text-cyprus dark:text-sand bg-cyprus/10 dark:bg-sand/10 px-1.5 py-0.5 rounded">+${c.exp} XP</span>` : '';
                     
-                    html += `<div onclick="toggleTrackerQuest('${i.id}', ${c.exp})" class="flex items-center justify-between p-3 rounded-xl cursor-pointer active:scale-95 transition-all overflow-hidden border ${bgClass}">
+                    html += `<div onclick="toggleTrackerQuest('${i.id}', ${c.exp})" class="flex items-center justify-between p-3 rounded-xl cursor-pointer active:scale-95 transition-all overflow-hidden border ${bgClass} shadow-sm">
                             <div class="flex items-center gap-2"><span class="font-bold text-xs ${textCls} transition-all">${i.lbl}</span>${xpBadge}</div>
                             <div class="w-5 h-5 rounded border-2 flex items-center justify-center transition-all duration-300 ${boxCls}">${ckd ? `<i data-lucide="check" class="w-3 h-3 ${document.documentElement.classList.contains('dark') ? 'text-cyprus' : 'text-sand'}"></i>` : ''}</div>
                         </div>`;
@@ -1955,6 +1976,7 @@
             if(pct === 100 && !trackerWasCompletedToday) { trackerWasCompletedToday = true; triggerConfetti(); } else if (pct < 100) trackerWasCompletedToday = false;
         }
 
+        // --- STREAMING_CHUNK:Rendering Parenting Data... ---
         function switchParentingTab(tab) {
             ['tips', 'doa', 'ceklis'].forEach(t => {
                 const tabEl = document.getElementById(`tab-p${t}`);
@@ -1990,7 +2012,7 @@
             if (container.children.length > 0) return;
             let html = '';
             PARENTING_DOA.forEach(doa => {
-                html += `<div class="card-custom p-4 rounded-2xl relative overflow-hidden mb-3">
+                html += `<div class="card-custom p-4 rounded-2xl relative overflow-hidden mb-3 shadow-sm">
                     <h3 class="text-xs font-bold text-cyprus dark:text-sand mb-3 flex items-center gap-1.5"><i data-lucide="heart" class="w-3.5 h-3.5 text-cyprus/30 dark:text-sand/30 fill-current"></i> ${doa.judul}</h3>
                     <p class="text-xl font-arabic text-cyprus dark:text-sand text-right leading-loose mb-3">${doa.arab}</p>
                     <div class="bg-cyprus/5 dark:bg-sand/5 p-3 rounded-xl border border-cyprus/10 dark:border-sand/10">
@@ -2013,7 +2035,7 @@
                 const boxCls = isChecked ? 'bg-cyprus dark:bg-sand border-cyprus dark:border-sand shadow-sm' : 'border-sand-dark dark:border-cyprus-light bg-sand dark:bg-cyprus';
                 const bgClass = isChecked ? 'bg-cyprus/10 dark:bg-sand/10 border-cyprus/30 dark:border-sand/30' : 'card-custom';
                 
-                html += `<div onclick="toggleParentingCeklis('${item.id}')" class="flex items-center justify-between p-3 rounded-xl cursor-pointer active:scale-95 transition-all overflow-hidden border ${bgClass}">
+                html += `<div onclick="toggleParentingCeklis('${item.id}')" class="flex items-center justify-between p-3 rounded-xl cursor-pointer active:scale-95 transition-all overflow-hidden border ${bgClass} shadow-sm">
                         <span class="font-bold text-xs ${textCls} transition-all">${item.label}</span>
                         <div class="w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${boxCls}">${isChecked ? `<i data-lucide="check" class="w-3 h-3 ${document.documentElement.classList.contains('dark') ? 'text-cyprus' : 'text-sand'}"></i>` : ''}</div>
                     </div>`;
@@ -2033,6 +2055,7 @@
             renderParentingCeklis();
         }
 
+        // --- STREAMING_CHUNK:Rendering Kisah Nabi & Doa List... ---
         function renderKisahList(query = '') {
             document.getElementById('kisah-detail-view').classList.add('hidden');
             document.getElementById('kisah-list-view').classList.remove('hidden');
@@ -2045,7 +2068,7 @@
             let html = '';
             filtered.forEach((nabi) => {
                 const originalIndex = KISAH_NABI.findIndex(n => n.nama === nabi.nama);
-                html += `<div onclick="openKisah(${originalIndex})" class="card-custom p-4 rounded-xl cursor-pointer hover:border-cyprus dark:hover:border-sand transition-all group flex items-center justify-between">
+                html += `<div onclick="openKisah(${originalIndex})" class="card-custom p-4 rounded-xl cursor-pointer hover:border-cyprus dark:hover:border-sand transition-all group flex items-center justify-between shadow-sm">
                     <div>
                         <h3 class="text-sm font-bold text-cyprus dark:text-sand group-hover:text-cyprus-light">${nabi.nama}</h3>
                         <p class="text-[9px] font-bold text-cyprus/60 dark:text-sand/60 uppercase tracking-widest">${nabi.gelar}</p>
@@ -2068,16 +2091,29 @@
             document.getElementById('detail-kisah-gelar').innerText = nabi.gelar;
             document.getElementById('detail-kisah-cerita').innerText = nabi.kisah;
             document.getElementById('detail-kisah-hikmah').innerText = nabi.hikmah;
+            document.getElementById('detail-kisah-praktik').innerText = nabi.praktik;
             
             let mkHtml = '';
             nabi.mukjizat.forEach(m => mkHtml += `<li class="leading-relaxed pl-1">${m}</li>`);
             document.getElementById('detail-kisah-mukjizat').innerHTML = mkHtml;
+
+            const doaContainer = document.getElementById('container-doa-nabi');
+            if(nabi.doa_arab) {
+                doaContainer.classList.remove('hidden');
+                document.getElementById('detail-kisah-doa-arab').innerText = nabi.doa_arab;
+                document.getElementById('detail-kisah-doa-latin').innerText = nabi.doa_latin;
+                document.getElementById('detail-kisah-doa-arti').innerText = nabi.doa_arti;
+            } else {
+                doaContainer.classList.add('hidden');
+            }
+
             document.getElementById('main-scroll-area').scrollTop = 0;
         }
         function closeKisah() { 
             document.getElementById('kisah-detail-view').classList.add('hidden'); 
             document.getElementById('kisah-list-view').classList.remove('hidden'); 
             document.getElementById('kisah-search').value = ''; renderKisahList(); 
+            document.getElementById('main-scroll-area').scrollTop = 0;
         }
 
         function renderDoaList(query = '') {
@@ -2091,7 +2127,7 @@
             let html = '';
             filtered.forEach((doa) => {
                 const originalIndex = DOA_DATA.findIndex(d => d.judul === doa.judul);
-                html += `<div onclick="openDoa(${originalIndex})" class="card-custom p-3.5 rounded-xl flex items-center justify-between cursor-pointer hover:border-cyprus dark:hover:border-sand transition-colors group mb-2">
+                html += `<div onclick="openDoa(${originalIndex})" class="card-custom p-3.5 rounded-xl flex items-center justify-between cursor-pointer hover:border-cyprus dark:hover:border-sand transition-colors group mb-2 shadow-sm">
                     <div class="flex items-center gap-3">
                         <div class="bg-cyprus/10 dark:bg-sand/10 p-2 rounded-lg text-cyprus dark:text-sand group-hover:bg-cyprus group-hover:text-sand transition-colors flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-4"/><path d="M9 9V5a2 2 0 0 1 4 0v4"/><path d="M5 12V7a2 2 0 0 1 4 0v5"/><path d="M19 12V7a2 2 0 0 0-4 0v5"/><path d="M5 12v2a7 7 0 0 0 14 0v-2"/><path d="M9 12V9"/><path d="M15 12V9"/></svg>
@@ -2112,6 +2148,7 @@
         }
         function closeDoa() { document.getElementById('doa-detail-view').classList.add('hidden'); document.getElementById('doa-list-view').classList.remove('hidden'); document.getElementById('doa-search').value = ''; renderDoaList(); }
 
+        // --- STREAMING_CHUNK:Rendering Utilities (Kompas, Confetti)... ---
         function bukaPetaMasjid() {
             const q = 'masjid+terdekat';
             window.open(userLocation ? `https://www.google.com/maps/search/${q}/@${userLocation.lat},${userLocation.lon},15z` : `https://www.google.com/maps/search/${q}/`, '_blank');
@@ -2120,7 +2157,7 @@
         function initKompasView() {
             if(!userLocation) {
                 document.getElementById('btn-start-kompas').classList.add('hidden');
-                document.getElementById('kompas-error').innerHTML = "Mohon aktifkan Lokasi HP."; document.getElementById('kompas-error').classList.remove('hidden');
+                document.getElementById('kompas-error').innerHTML = "Mohon aktifkan Lokasi GPS HP Anda."; document.getElementById('kompas-error').classList.remove('hidden');
             } else {
                 const latk=21.422487*Math.PI/180; const longk=39.826206*Math.PI/180;
                 const phi=userLocation.lat*Math.PI/180; const lambda=userLocation.lon*Math.PI/180;
@@ -2152,6 +2189,14 @@
             kompasAttached = true;
         }
 
+        function triggerConfetti() {
+            var duration = 2000; var end = Date.now() + duration;
+            (function frame() {
+                confetti({ particleCount: 3, angle: 60, spread: 55, origin: { x: 0 }, colors: ['#004741', '#F0EDE4', '#ffefb3'] });
+                confetti({ particleCount: 3, angle: 120, spread: 55, origin: { x: 1 }, colors: ['#004741', '#F0EDE4', '#ffefb3'] });
+                if (Date.now() < end) requestAnimationFrame(frame);
+            }());
+        }
     </script>
 </body>
 </html>
